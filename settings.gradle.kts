@@ -38,3 +38,4 @@ rootProject.name = "ComposeLib"
 include(":ui-components")
 include(":component-registry")
 include(":preview-app")
+include(":preview-web")

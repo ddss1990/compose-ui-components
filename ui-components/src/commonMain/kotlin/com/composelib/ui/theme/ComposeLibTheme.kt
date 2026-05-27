@@ -5,9 +5,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import com.composelib.catalog.ThemeDefinition
 import com.composelib.catalog.ThemeMode
+
+val LocalComposeLibTheme = staticCompositionLocalOf<ThemeDefinition> {
+    error("ComposeLibTheme was not provided")
+}
 
 fun ThemeDefinition.toMaterialColorScheme(): ColorScheme = when (mode) {
     ThemeMode.Light -> lightColorScheme(
@@ -48,10 +54,12 @@ fun ComposeLibTheme(
     theme: ThemeDefinition,
     content: @Composable () -> Unit,
 ) {
-    MaterialTheme(
-        colorScheme = theme.toMaterialColorScheme(),
-        content = content,
-    )
+    CompositionLocalProvider(LocalComposeLibTheme provides theme) {
+        MaterialTheme(
+            colorScheme = theme.toMaterialColorScheme(),
+            content = content,
+        )
+    }
 }
 
 private fun String.toColor(): Color {

@@ -23,6 +23,7 @@ This module is the publishable Compose library surface for reusable UI component
   - documented states or variants;
   - at least one previewable example in the preview app.
 - Keep defaults predictable and aligned with Compose and Material conventions unless the design intentionally differs.
+- Read shared theme foundation tokens from `LocalComposeLibTheme` rather than hardcoding spacing, shapes, or typography.
 
 ## Release rules
 

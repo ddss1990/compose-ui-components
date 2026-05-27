@@ -1,8 +1,8 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.compose.multiplatform)
-    alias(libs.plugins.kotlin.compose)
+    id("com.android.library")
+    id("org.jetbrains.kotlin.multiplatform")
+    id("org.jetbrains.compose")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 kotlin {
@@ -13,6 +13,7 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":component-registry"))
             implementation(compose.runtime)
+            implementation(compose.foundation)
             implementation(compose.ui)
             implementation(compose.material3)
         }

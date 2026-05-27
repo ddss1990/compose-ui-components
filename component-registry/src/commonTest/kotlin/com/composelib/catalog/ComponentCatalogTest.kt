@@ -7,19 +7,26 @@ class ComponentCatalogTest {
     @Test
     fun catalogEntryKeepsAllMetadata() {
         val entry = ComponentEntry(
-            name = "Button",
-            category = ComponentCategory.InputAndFormControls,
-            description = "Triggers an action",
-            previewKey = "button",
+            name = "Info display card",
+            category = ComponentCategory.DataDisplay,
+            description = "Shows text, metadata, and optional media in a calm card layout.",
+            previewKey = "info-display-card",
             sourceModule = "ui-components",
-            usageNotes = "Use for primary and secondary actions",
         )
 
-        assertEquals("Button", entry.name)
-        assertEquals(ComponentCategory.InputAndFormControls, entry.category)
-        assertEquals("Triggers an action", entry.description)
-        assertEquals("button", entry.previewKey)
+        assertEquals("Info display card", entry.name)
+        assertEquals(ComponentCategory.DataDisplay, entry.category)
+        assertEquals("Shows text, metadata, and optional media in a calm card layout.", entry.description)
+        assertEquals("info-display-card", entry.previewKey)
         assertEquals("ui-components", entry.sourceModule)
-        assertEquals("Use for primary and secondary actions", entry.usageNotes)
+        assertEquals(listOf(PreviewSurface.Web, PreviewSurface.Android), entry.previewTargets)
+    }
+
+    @Test
+    fun defaultCatalogPrioritizesWebPreviewFirst() {
+        val entry = ComponentCatalog.defaultComponents().single()
+
+        assertEquals("info-display-card", entry.previewKey)
+        assertEquals(PreviewSurface.Web, entry.previewTargets.first())
     }
 }

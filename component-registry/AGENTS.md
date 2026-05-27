@@ -19,6 +19,7 @@ This module defines the shared catalog metadata for Compose components.
 - Update catalog entries when component names, categories, or preview routes change.
 - Avoid duplicating catalog definitions in the preview app or future web preview.
 - Keep theme definitions here too, using platform-neutral tokens and light/dark variants.
+- Order preview targets with `preview-web` ahead of `preview-android` when both are supported.
 
 ## Documentation rules
 
