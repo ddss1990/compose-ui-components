@@ -10,6 +10,8 @@ This module is the publishable Compose library surface for reusable UI component
 - Do not place preview app navigation, catalog screens, or demo-only helpers here.
 - Keep the public API small, stable, and easy to consume from other repositories.
 - Prefer component APIs that can be reused across different apps without project-specific assumptions.
+- Keep reusable Compose code in `commonMain`; any Android-only code must stay in Android source sets.
+- Do not depend on Android-only `androidx.compose.*` artifacts from shared source sets; use Compose Multiplatform dependencies there instead.
 
 ## Component authoring rules
 
@@ -32,3 +34,4 @@ This module is the publishable Compose library surface for reusable UI component
 
 - Update module-level docs when component APIs, tokens, or export surface change.
 - If a component moves categories or changes its preview contract, update the catalog and guidance together.
+- Keep the `ComposeLibTheme(...)` entry point aligned with the shared theme catalog and avoid hardcoded color values in component code.
