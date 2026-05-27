@@ -21,12 +21,48 @@ data class ThemeColorTokens(
     val outline: String,
 )
 
+data class ThemeTypographyTokens(
+    val titleSizeSp: Int,
+    val titleWeight: Int,
+    val bodySizeSp: Int,
+    val bodyWeight: Int,
+    val captionSizeSp: Int,
+    val captionWeight: Int,
+)
+
+data class ThemeSpacingTokens(
+    val compactDp: Int,
+    val regularDp: Int,
+    val spaciousDp: Int,
+    val sectionDp: Int,
+)
+
+data class ThemeShapeTokens(
+    val cardCornerRadiusDp: Int,
+    val mediaCornerRadiusDp: Int,
+    val pillCornerRadiusDp: Int,
+)
+
+data class ThemeMediaTokens(
+    val thumbnailAspectRatio: Float,
+    val heroAspectRatio: Float,
+    val overlayAlpha: Float,
+)
+
+data class ThemeFoundationTokens(
+    val typography: ThemeTypographyTokens,
+    val spacing: ThemeSpacingTokens,
+    val shapes: ThemeShapeTokens,
+    val media: ThemeMediaTokens,
+)
+
 data class ThemeDefinition(
     val key: String,
     val name: String,
     val mode: ThemeMode,
     val description: String,
     val colors: ThemeColorTokens,
+    val foundation: ThemeFoundationTokens = defaultFoundation(),
 )
 
 object ThemeCatalog {
@@ -51,6 +87,7 @@ object ThemeCatalog {
                 onSurfaceVariant = "#4A4540",
                 outline = "#77726B",
             ),
+            foundation = defaultFoundation(),
         ),
         ThemeDefinition(
             key = "editorial-dark",
@@ -72,6 +109,36 @@ object ThemeCatalog {
                 onSurfaceVariant = "#CFC7BA",
                 outline = "#8E877E",
             ),
+            foundation = defaultFoundation(overlayAlpha = 0.18f),
         ),
     )
 }
+
+private fun defaultFoundation(
+    overlayAlpha: Float = 0.12f,
+): ThemeFoundationTokens = ThemeFoundationTokens(
+    typography = ThemeTypographyTokens(
+        titleSizeSp = 20,
+        titleWeight = 600,
+        bodySizeSp = 14,
+        bodyWeight = 400,
+        captionSizeSp = 12,
+        captionWeight = 500,
+    ),
+    spacing = ThemeSpacingTokens(
+        compactDp = 8,
+        regularDp = 12,
+        spaciousDp = 16,
+        sectionDp = 24,
+    ),
+    shapes = ThemeShapeTokens(
+        cardCornerRadiusDp = 20,
+        mediaCornerRadiusDp = 16,
+        pillCornerRadiusDp = 999,
+    ),
+    media = ThemeMediaTokens(
+        thumbnailAspectRatio = 4f / 3f,
+        heroAspectRatio = 16f / 9f,
+        overlayAlpha = overlayAlpha,
+    ),
+)
