@@ -19,3 +19,10 @@ Each module keeps collaboration instructions in its own `CLAUDE.md` and `AGENTS.
 - Browse components by category in `preview-app`.
 - Keep component metadata centralized in `component-registry`.
 - Reuse the same catalog for the future `preview-web` surface.
+
+## Foundation components
+
+- Buttons: Primary / Secondary / Text (default, disabled, loading)
+- Images: CircularImage / RectangularImage
+- Text: PrimarySecondaryTextRow
+- Assistive: TagChip / SectionHeader / DividerText
