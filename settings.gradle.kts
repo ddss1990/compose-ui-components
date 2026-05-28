@@ -1,10 +1,19 @@
 pluginManagement {
     repositories {
+        maven {
+            setUrl("https://maven.aliyun.com/repository/google")
+        }
+        maven {
+            setUrl("https://maven.aliyun.com/repository/public")
+        }
+        maven {
+            setUrl("https://maven.aliyun.com/repository/gradle-plugin")
+        }
         google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
+            mavenContent {
+                includeGroupAndSubgroups("androidx")
+                includeGroupAndSubgroups("com.android")
+                includeGroupAndSubgroups("com.google")
             }
         }
         mavenCentral()
@@ -26,9 +35,23 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()
+        maven {
+            setUrl("https://maven.aliyun.com/repository/google")
+        }
+        maven {
+            setUrl("https://maven.aliyun.com/repository/public")
+        }
+        maven {
+            setUrl("https://maven.aliyun.com/repository/gradle-plugin")
+        }
+        google {
+            mavenContent {
+                includeGroupAndSubgroups("androidx")
+                includeGroupAndSubgroups("com.android")
+                includeGroupAndSubgroups("com.google")
+            }
+        }
         mavenCentral()
     }
 }

@@ -7,6 +7,9 @@ plugins {
 
 kotlin {
     androidTarget()
+    wasmJs {
+        browser()
+    }
     jvmToolchain(17)
 
     sourceSets {
