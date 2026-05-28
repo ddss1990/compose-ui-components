@@ -1,28 +1,15 @@
-# ComposeLib
+# compose-ui-components
 
-Compose component repository for a reusable UI library, Android preview app, and shared component catalog.
+Reusable Compose base components and shared component catalog metadata.
 
-## Start here
+## Modules
 
-- [Repository architecture](docs/architecture.md)
-- [Module guide](docs/modules.md)
-- [Implementation plan](docs/superpowers/plans/2026-05-27-compose-component-repo-bootstrap.md)
-- [Design spec](docs/superpowers/specs/2026-05-27-compose-component-repo-design.md)
+- `ui-components`: publishable Compose foundation components.
+- `component-registry`: shared catalog, categories, and theme metadata.
 
-## Instruction files
+## Common commands
 
-Each module keeps collaboration instructions in its own `CLAUDE.md` and `AGENTS.md`.
-
-## Goals
-
-- Publish reusable Compose components from `ui-components`.
-- Browse components by category in `preview-app`.
-- Keep component metadata centralized in `component-registry`.
-- Reuse the same catalog for the future `preview-web` surface.
-
-## Foundation components
-
-- Buttons: Primary / Secondary / Text (default, disabled, loading)
-- Images: CircularImage / RectangularImage
-- Text: PrimarySecondaryTextRow
-- Assistive: TagChip / SectionHeader / DividerText
+```bash
+./gradlew :component-registry:allTests :ui-components:allTests
+./gradlew :ui-components:assemble
+```

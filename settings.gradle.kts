@@ -56,9 +56,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ComposeLib"
+rootProject.name = "compose-ui-components"
 
 include(":ui-components")
 include(":component-registry")
-include(":preview-app")
-include(":preview-web")

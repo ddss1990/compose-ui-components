@@ -1,21 +1,15 @@
-# ComposeLib
+# compose-ui-components
 
-一个面向 Jetpack Compose 的组件仓库，提供可复用 UI 库、Android 预览 App 和共享组件目录。
+用于沉淀可复用 Compose 基础组件与共享组件目录元数据。
 
-## 从这里开始
+## 模块
 
-- [仓库架构](docs/architecture.md)
-- [模块说明](docs/modules.md)
-- [实施计划](docs/superpowers/plans/2026-05-27-compose-component-repo-bootstrap.md)
-- [设计说明](docs/superpowers/specs/2026-05-27-compose-component-repo-design.md)
+- `ui-components`：可发布的 Compose 基础组件。
+- `component-registry`：共享组件目录、分类与主题元数据。
 
-## 指导文件约定
+## 常用命令
 
-每个模块都维护自己的 `CLAUDE.md` 和 `AGENTS.md`。
-
-## 目标
-
-- 从 `ui-components` 发布可复用的 Compose 组件。
-- 在 `preview-app` 中按分类浏览组件。
-- 将组件元数据集中在 `component-registry`。
-- 让未来的 `preview-web` 复用同一份目录。
+```bash
+./gradlew :component-registry:allTests :ui-components:allTests
+./gradlew :ui-components:assemble
+```

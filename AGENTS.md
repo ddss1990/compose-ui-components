@@ -1,4 +1,4 @@
-# ComposeLib
+# compose-ui-components
 
 ## Scope and precedence
 
@@ -8,21 +8,19 @@
 
 ## Repository purpose
 
-This repository is intended to become a reusable Jetpack Compose component library with:
+This repository is the source of reusable Jetpack Compose component building blocks:
 
 - a publishable Android library module;
-- an Android preview app;
-- a later web preview surface;
 - a shared component catalog with categories and metadata.
 
 ## Working rules
 
 - Prefer small, reusable modules over a single large app module.
-- Keep preview/demo code out of the published library artifact.
+- Keep preview/demo app code out of this repository.
 - Keep component metadata centralized so Android and web previews do not drift.
 - Categorize components by usage and user intent, not just widget type.
 - Favor stable public APIs in the library module.
-- Avoid duplicate component registries or hardcoded preview lists.
+- Avoid duplicate component registries.
 - Do not auto-commit changes; leave commits to the user.
 - Update documentation promptly when code, structure, or publishing rules change.
 
@@ -30,7 +28,7 @@ This repository is intended to become a reusable Jetpack Compose component libra
 
 - Claude and Copilot should follow the same repository conventions.
 - Reuse existing patterns before introducing new ones.
-- Make changes that keep the repository easy to consume as a library and easy to browse as a preview catalog.
+- Make changes that keep this repository easy to consume as a component library.
 - When a change affects a module boundary or public API, update the relevant instruction file in the same change.
 
 ## Compose component guidance
@@ -45,12 +43,10 @@ This repository is intended to become a reusable Jetpack Compose component libra
 - Keep preview examples realistic and concise.
 - Include common states such as default, disabled, error, loading, and empty when they matter.
 
-## Preview app guidance
+## Preview integration guidance
 
-- Use the preview app as the primary manual verification surface.
-- Make it easy to browse by category and inspect one component at a time.
-- Support light and dark theme previews.
-- Keep routing and navigation driven by the shared component catalog.
+- Keep `component-registry` platform-neutral so external preview repositories can consume it.
+- Do not introduce preview-app or preview-web specific routing/state in this repository.
 
 ## Publishing guidance
 
