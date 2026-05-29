@@ -1,10 +1,21 @@
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.multiplatform")
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidMultiplatformLibrary)
 }
 
 kotlin {
-    androidTarget()
+    androidLibrary {
+        namespace = "com.composelib.catalog"
+        compileSdk = 34
+        minSdk = 24
+    }
+    jvm()
+    js {
+        browser()
+    }
+    @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         browser()
     }
@@ -14,19 +25,5 @@ kotlin {
         commonTest.dependencies {
             implementation(kotlin("test"))
         }
-    }
-}
-
-android {
-    namespace = "com.composelib.catalog"
-    compileSdk = 34
-
-    defaultConfig {
-        minSdk = 24
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
     }
 }
